@@ -21,7 +21,8 @@ const LandingPage = () => {
   //   //notifyOnNetworkStatusChange: true
   // })
   //if(e) history.push('/ahuhu')
-  const { loading: l, data: d } = useSubscription(gql`
+  
+  const { loading: l, data: thang } = useSubscription(gql`
     subscription {
       getNumberFriend
     }
@@ -29,10 +30,13 @@ const LandingPage = () => {
     onSubscriptionComplete: (data) => console.log(data),
     onSubscriptionData:(data) => {
       setNumber(data?.subscriptionData?.data.getNumberFriend)
-      console.log('onSubscriptionData', data)}
+     // console.log('onSubscriptionData', data)
+    },
+    fetchPolicy:'network-only'
   })
+  console.log("d", thang)
   useEffect(() => {
-    console.log("d", d)
+   
     return () => {
       console.log("thang test will un mount")
     }
