@@ -7,7 +7,8 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <Switch>
-            <Route path="/" component={LandingPage} />
+            <Route exact path="/" component={LandingPage} />
+            <Route render={()=><div> thang test not found</div>}></Route>
           </Switch>
         </BrowserRouter>
       </div>
